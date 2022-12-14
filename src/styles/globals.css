@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#app {
+  @apply w-full;
+}
+:root {
+  accent-color: #e24755;
+}
+body {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "lavarwave", sans-serif;
+  }
+}
+
+* {
+  word-break: keep-all;
+}
