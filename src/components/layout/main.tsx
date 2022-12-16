@@ -30,6 +30,7 @@ export const Main = ({ title }: MainProps) => {
     initiative: "업무(Initiative)",
     chapter: "챕터",
     group: "부서",
+    name: "담당자",
     achievement: "달성률",
   };
 

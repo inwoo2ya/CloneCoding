@@ -1,35 +1,26 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Header } from "./components/layout/header";
-import { Main } from "./components/layout/main";
 import { Footer } from "./components/layout/footer";
+import { Notion } from "./pages/Notion";
+import { CooperationTool } from "./pages/CooperationTool";
 
 function App() {
-  const [title, setTitle] = useState("Chapter");
+  const [form, setForm] = useState(false);
+
   return (
     <div className="App">
       <button
-        className={classNames("m-2 p-2 rounded-lg ", {
-          "bg-red-500": title === "Chapter",
+        className={classNames("m-5 p-5 rounded-lg font-bold", {
+          "bg-gray-200": form === false,
+          "bg-yellow-300": form === true,
         })}
         onClick={() => {
-          setTitle("Chapter");
+          setForm(!form);
         }}
       >
-        챕터OKR
+        Notion/협업관리툴
       </button>
-      <button
-        className={classNames("mx-2 p-2 rounded-lg ", {
-          "bg-red-500": title === "Group",
-        })}
-        onClick={() => {
-          setTitle("Group");
-        }}
-      >
-        그룹OKR
-      </button>
-      <Header title={title} />
-      <Main title={title} />
+      {form ? <CooperationTool /> : <Notion />}
       <Footer />
     </div>
   );

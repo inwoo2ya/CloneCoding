@@ -82,7 +82,9 @@ export const OKRTable = ({
             {Object.keys(headDatas).map((v: string, k: number) => (
               <th
                 className={classNames("py-2", {
-                  hidden: sorted.toLowerCase() === "chapter" && v === "group",
+                  hidden:
+                    sorted.toLowerCase() === "chapter" &&
+                    (v === "group" || v === "name"),
                 })}
                 key={k}
               >
@@ -111,7 +113,7 @@ export const OKRTable = ({
                         index < Object.values(headDatas).length - 1,
                       hidden:
                         sorted.toLowerCase() === "chapter" &&
-                        bodyKey === "group",
+                        (bodyKey === "group" || bodyKey === "name"),
                     }
                   )}
                 >
