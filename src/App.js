@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { Footer } from "./components/layout/footer";
 import { Notion } from "./pages/Notion";
-import { CooperationTool } from "./pages/CooperationTool";
+import { CooperationTool } from "./pages/WorkManagement";
 
 function App() {
   const [form, setForm] = useState(false);
@@ -18,7 +18,7 @@ function App() {
           setForm(!form);
         }}
       >
-        Notion/협업관리툴
+        Notion/업무관리
       </button>
       {form ? <CooperationTool /> : <Notion />}
       <Footer />

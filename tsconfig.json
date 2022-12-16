@@ -33,7 +33,7 @@
       "@public/*": ["public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.js", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "src/svg.d.ts"],
   "exclude": ["node_modules"],
   "ts-node": {
     "transpileOnly": true,
