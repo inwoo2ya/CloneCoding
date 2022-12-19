@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { Search } from "./Search";
 
 interface OKRProps {
   title: string;
@@ -33,6 +34,8 @@ export const OKRTable = ({
       object: "경험해보지 못한 근무환경 구축",
       chapter: "총무",
       keyResult: "업무 능률을 높일 수 있는 시스템을 도입한다.",
+      name: "총길동",
+      group: "자산운영팀",
       initiative: "최신의 다양한 업무 물품을 지원한다.",
       achievement: 10,
     },
@@ -42,6 +45,8 @@ export const OKRTable = ({
       object: "디지털 범죄 대응 업계 1등",
       chapter: "마케팅",
       keyResult: "디지털 범죄 대응 기업 신 사업 기획 2건",
+      name: "마길동",
+      group: "마케팅기획추진팀",
       initiative: "첨단화된 시스템을 홍보한다.",
       achievement: 15,
     },
@@ -65,11 +70,12 @@ export const OKRTable = ({
   return (
     <section className={classNames(className)}>
       <ul className="mb-3 border-b-[1px]">
-        <div className="border-b-[2px] w-fit border-b-black">
-          <li className="py-1 px-[2px] cursor-pointer">
-            <p className="py-1 px-[2px] rounded-md hover:bg-gray-200">
-              {title} 설정
-            </p>
+        <div className="w-full flex justify-between">
+          <li className="p-1 cursor-pointer border-b-[2px] border-b-black">
+            <p className="p-1 rounded-md hover:bg-gray-200">{title} 설정</p>
+          </li>
+          <li className="p-3">
+            <Search className="text-sm" />
           </li>
         </div>
       </ul>
@@ -105,17 +111,16 @@ export const OKRTable = ({
               {Object.keys(headDatas).map((bodyKey, index) => (
                 <td
                   key={index}
-                  className={classNames(
-                    "h-full border-b-[1px] px-2 whitespace-normal",
-                    {
-                      "text-right": index === 0,
-                      "border-r-[1px]":
-                        index < Object.values(headDatas).length - 1,
-                      hidden:
-                        sorted.toLowerCase() === "chapter" &&
-                        (bodyKey === "group" || bodyKey === "name"),
-                    }
-                  )}
+                  className={classNames("h-full border-b-[1px] px-2", {
+                    "text-right": index === 0,
+                    "border-r-[1px]":
+                      index < Object.values(headDatas).length - 1,
+                    hidden:
+                      sorted.toLowerCase() === "chapter" &&
+                      (bodyKey === "group" || bodyKey === "name"),
+                    "hover:bg-gray-200 hover:cursor-pointer":
+                      title === headDatas[bodyKey],
+                  })}
                 >
                   {body[bodyKey as keyof typeof body] as string}
                   {bodyKey === "achievement" ? <>%</> : null}

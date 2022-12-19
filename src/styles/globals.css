@@ -17,7 +17,12 @@ body {
     font-family: "lavarwave", sans-serif;
   }
 }
-
+.actived {
+  overflow: hidden;
+  transform-origin: right;
+  transform: scaleX(10px);
+  transition: all 0.5s;
+}
 * {
   word-break: keep-all;
 }

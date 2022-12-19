@@ -15,7 +15,7 @@ export const Notion = () => {
         <button
           key={k}
           className={classNames("m-2 p-2 rounded-lg ", {
-            "bg-red-500": title === v[0],
+            "bg-red-500 text-white": title === v[0],
           })}
           onClick={() => {
             setTitle(v[0]);
