@@ -14,6 +14,7 @@ export const InputOKR = ({
   sorted,
   title,
   visible,
+  headDatas,
   setVisible,
 }: InputOKRprops) => {
   return (
@@ -24,6 +25,9 @@ export const InputOKR = ({
       )}
     >
       <h1>{title}</h1>
+      {Object.values(headDatas).map((value, index) => (
+        <div key={index}>{value}</div>
+      ))}
       <button
         className="p-1 hover:bg-zinc-400 rounded-xl"
         onClick={() => setVisible(false)}

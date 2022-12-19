@@ -38,19 +38,6 @@ export const Main = ({ title }: MainProps) => {
     achievement: "달성률",
   };
 
-  const headDatas = () => {
-    switch (createTitle) {
-      case "Object(목표)":
-        return objectHeader;
-        break;
-      case "KeyResult(기대 결과)":
-        return keyResultHeader;
-        break;
-      default:
-        return initiativeHeader;
-        break;
-    }
-  };
   return (
     <main className=" w-full h-full max-w-full py-5 mx-auto xl:max-w-[1280px]">
       <InputOKR
@@ -58,7 +45,7 @@ export const Main = ({ title }: MainProps) => {
         title={createTitle}
         visible={visible}
         setVisible={setVisible}
-        headDatas={headDatas}
+        headDatas={initiativeHeader}
       />
 
       <OKRTable
