@@ -33,7 +33,7 @@
       "@public/*": ["public/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "src/svg.d.ts"],
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "src", "src/custom.d.ts"],
   "exclude": ["node_modules"],
   "ts-node": {
     "transpileOnly": true,

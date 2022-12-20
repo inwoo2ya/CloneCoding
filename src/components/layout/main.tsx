@@ -39,7 +39,7 @@ export const Main = ({ title }: MainProps) => {
   };
 
   return (
-    <main className=" w-full h-full max-w-full py-5 mx-auto xl:max-w-[1280px]">
+    <main className=" w-full h-full maxwidth40 py-5 mx-auto xl:max-w-[1280px]">
       <InputOKR
         sorted={title}
         title={createTitle}
