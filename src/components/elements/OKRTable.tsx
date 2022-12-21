@@ -5,13 +5,12 @@ import { useRecoilState } from "recoil";
 import { searchState } from "../../store/search";
 
 interface OKRProps {
-  title: string;
+  title?: string;
   sorted: string;
   className?: string;
   headDatas: { [key: string]: string };
-  bodyDatas?: {
-    [key: string]: string | { [key: string]: string | JSX.Element | boolean }[];
-  };
+  bodyDatas?: { [key: string]: string | number }[] | undefined;
+
   onCreate: Dispatch<SetStateAction<string>>;
   onClick: Dispatch<SetStateAction<boolean>>;
 }
@@ -80,20 +79,66 @@ export const OKRTable = ({
       achievement: 13,
     },
   ];
-  const filtered = testBodyData.filter((value) => {
+  const filtered = (bodyDatas || []).filter((value) => {
     if (searchData === "") {
       return value;
-    } else if (
-      value.object.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.chapter.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.group.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.initiative.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.keyResult.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.name.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.quarter.toUpperCase().includes(searchData.toUpperCase()) ||
-      value.year.toUpperCase().includes(searchData.toUpperCase())
-    ) {
-      return value;
+    } else if (sorted.toLowerCase() === "chapter") {
+      if (
+        value.object
+          .toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.chapter
+          .toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.initiative
+          ?.toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.keyResult
+          ?.toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.quarter
+          .toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.year.toString().toUpperCase().includes(searchData.toUpperCase())
+      ) {
+        return value;
+      }
+    } else if (sorted.toLowerCase() === "group") {
+      if (
+        value.object
+          .toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.chapter
+          .toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.group?.toString().includes(searchData.toUpperCase()) ||
+        value.initiative
+          ?.toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.keyResult
+          ?.toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.name
+          ?.toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.quarter
+          .toString()
+          .toUpperCase()
+          .includes(searchData.toUpperCase()) ||
+        value.year.toString().toUpperCase().includes(searchData.toUpperCase())
+      ) {
+        return value;
+      }
     }
   });
   // const testData: { [key: string]: string | number } = [

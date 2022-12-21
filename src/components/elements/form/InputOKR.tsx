@@ -1,22 +1,36 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import classNames from "classnames";
 
 interface InputOKRprops {
   sorted: string;
-  title: string;
+  title?: string;
   className?: string;
   setVisible: Dispatch<SetStateAction<boolean>>;
   visible: boolean;
-  headDatas: { [key: string]: string };
+  headDatas1: { [key: string]: string };
+  headDatas2: { [key: string]: string };
+  headDatas3: { [key: string]: string };
 }
 export const InputOKR = ({
   className,
   sorted,
   title,
   visible,
-  headDatas,
+  headDatas1,
+  headDatas2,
+  headDatas3,
   setVisible,
 }: InputOKRprops) => {
+  const [headDatas, setHeadDatas] = useState(headDatas1);
+  useEffect(() => {
+    if (title === "Object(목표)") {
+      setHeadDatas(headDatas3);
+    } else if (title === "KeyResult(기대 결과)") {
+      setHeadDatas(headDatas2);
+    } else {
+      setHeadDatas(headDatas1);
+    }
+  }, [title]);
   return (
     <section
       className={classNames(
@@ -45,7 +59,12 @@ export const InputOKR = ({
         return (
           <div
             key={index}
-            className={classNames("flex my-2", { hidden: value === title })}
+            className={classNames("flex my-2", {
+              hidden:
+                (sorted.toLowerCase() === "chapter" &&
+                  (value === "Group" || value === "담당자")) ||
+                value === title,
+            })}
           >
             <div className="cursor-pointer items-center rounded-md xl:w-[160px] py-1 pl-2 text-[#37352fa6] hover:bg-gray-200">
               {value}
