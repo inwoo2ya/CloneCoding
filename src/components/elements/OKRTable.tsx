@@ -10,7 +10,7 @@ interface OKRProps {
   className?: string;
   headDatas: { [key: string]: string };
   bodyDatas?: { [key: string]: string | number }[] | undefined;
-
+  setCurrent?: Dispatch<SetStateAction<number>>;
   onCreate: Dispatch<SetStateAction<string>>;
   onClick: Dispatch<SetStateAction<boolean>>;
 }
@@ -23,62 +23,11 @@ export const OKRTable = ({
   bodyDatas,
   onCreate,
   onClick,
+  setCurrent,
 }: OKRProps) => {
   sorted.toLowerCase();
   const [searchData, setSearchData] = useRecoilState<string>(searchState);
-  const testHeadData: { [key: string]: string } = {
-    year: "년도",
-    quarter: "분기",
-    object: "목표",
-    chapter: "Chapter",
-    achievement: "달성률",
-  };
-  const testBodyData = [
-    {
-      year: "2022",
-      quarter: "3분기",
-      object: "경험해보지 못한 근무환경 구축",
-      chapter: "총무",
-      keyResult: "업무 능률을 높일 수 있는 시스템을 도입한다.",
-      name: "총길동",
-      group: "자산운영팀",
-      initiative: "최신의 다양한 업무 물품을 지원한다.",
-      achievement: 10,
-    },
-    {
-      year: "2022",
-      quarter: "3분기",
-      object: "디지털 범죄 대응 업계 1등",
-      chapter: "마케팅",
-      keyResult: "디지털 범죄 대응 기업 신 사업 기획 2건",
-      name: "마길동",
-      group: "마케팅기획추진팀",
-      initiative: "첨단화된 시스템을 홍보한다.",
-      achievement: 15,
-    },
-    {
-      year: "2023",
-      quarter: "1분기",
-      object: "경험해보지 못한 근무환경 구축",
-      chapter: "총무",
-      keyResult: "조직의 안정화를 위한 기본 업무 환경 구성을 완성한다.",
-      initiative: "업무시스템을 빠르게 완성한다.",
-      group: "자산운영팀",
-      name: "총총길동",
-      achievement: 20,
-    },
-    {
-      year: "2023",
-      quarter: "1분기",
-      object: "경험해보지 못한 근무환경 구축",
-      chapter: "총무",
-      keyResult: "국내 최고의 근무환경을 구성한다.",
-      initiative: "최신의 다양한 업무 물품을 지원한다.",
-      group: "자산운영팀",
-      name: "총총총길동",
-      achievement: 13,
-    },
-  ];
+
   const filtered = (bodyDatas || []).filter((value) => {
     if (searchData === "") {
       return value;
@@ -141,22 +90,6 @@ export const OKRTable = ({
       }
     }
   });
-  // const testData: { [key: string]: string | number } = [
-  // {
-  //   년도: "2022",
-  //   분기: "3분기",
-  //   목표: "경험해보지 못한 근무환경 구축",
-  //   Chapter: "총무",
-  //   달성률: 10,
-  // },
-  // {
-  //   년도: "2022",
-  //   분기: "3분기",
-  //   목표: "디지털 범죄 대응 업계 1등",
-  //   Chapter: "마케팅",
-  //   달성률: 15,
-  // },
-  // ];
   return (
     <section className={classNames(className)}>
       <ul className="mb-3 border-b-[1px] sticky">
@@ -221,6 +154,7 @@ export const OKRTable = ({
                       onClick={() => {
                         if (title === headDatas[bodyKey]) {
                           onCreate(headDatas[bodyKey]);
+                          setCurrent(i);
                           onClick(true);
                         }
                       }}

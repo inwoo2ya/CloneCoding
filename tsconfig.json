@@ -17,6 +17,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "baseUrl": ".",
     "paths": {
       "@data/*": ["server/data/*"],

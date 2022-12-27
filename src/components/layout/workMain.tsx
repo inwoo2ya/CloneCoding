@@ -25,13 +25,19 @@ export const WorkMain = () => {
   ];
   const [visible, setVisible] = useState<boolean>(false);
   const [createTitle, setCreateTitle] = useState<string>("");
+  const [currentClick, setCurrentClick] = useState<number>(undefined);
+
   return (
     <main className="py-[100px] ">
       <h1 className="text-4xl pb-5 border-b-[1px]">업무 관리</h1>
       <InputOKR
         sorted="Group"
+        title="Initiative(업무)"
         visible={visible}
         setVisible={setVisible}
+        setCurrent={setCurrentClick}
+        data={initiativeBody}
+        current={currentClick}
         headDatas1={initiativeHeader}
         headDatas2={{}}
         headDatas3={{}}
@@ -41,6 +47,7 @@ export const WorkMain = () => {
         sorted="Group"
         title="Initiative(업무)"
         bodyDatas={initiativeBody}
+        setCurrent={setCurrentClick}
         onCreate={setCreateTitle}
         onClick={setVisible}
       />
