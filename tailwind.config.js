@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -20,5 +22,20 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents, addUtilities }) => {
+      addComponents({
+        ".maxwidth40": {
+          maxWidth: "calc(100% - 40px)",
+        },
+      });
+      addUtilities({
+        ".flex-center": {
+          display: "flex",
+          "align-items": "center",
+          "justify-content": "center",
+        },
+      });
+    }),
+  ],
 };

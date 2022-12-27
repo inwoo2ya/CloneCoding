@@ -17,11 +17,16 @@ body {
     font-family: "lavarwave", sans-serif;
   }
 }
-.actived {
-  overflow: hidden;
-  transform-origin: right;
-  transform: scaleX(10px);
-  transition: all 0.5s;
+#table::-webkit-scrollbar {
+  width: 10px;
+  height: 12px;
+}
+#table::-webkit-scrollbar-thumb {
+  background-color: #d3d1cb;
+}
+
+#table::-webkit-scrollbar-track {
+  background-color: #edece9;
 }
 * {
   word-break: keep-all;
