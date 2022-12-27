@@ -11,8 +11,8 @@ interface InputOKRprops {
   current?: number;
   data?: { [key: string]: string | number }[];
   headDatas1: { [key: string]: string };
-  headDatas2: { [key: string]: string };
-  headDatas3: { [key: string]: string };
+  headDatas2?: { [key: string]: string };
+  headDatas3?: { [key: string]: string };
 }
 export const InputOKR = ({
   className,
