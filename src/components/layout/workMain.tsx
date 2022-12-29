@@ -39,8 +39,6 @@ export const WorkMain = () => {
         data={initiativeBody}
         current={currentClick}
         headDatas1={initiativeHeader}
-        headDatas2={{}}
-        headDatas3={{}}
       />
       <OKRTable
         headDatas={initiativeHeader}
