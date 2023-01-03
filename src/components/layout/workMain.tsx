@@ -9,7 +9,7 @@ export const WorkMain = () => {
     initiative: "Initiative(업무)",
     chapter: "Chapter",
     group: "Group",
-    achievement: "달성률",
+    achievement: "달성률(%)",
     check: "업무 상태",
   };
   const initiativeBody = [
@@ -39,6 +39,7 @@ export const WorkMain = () => {
         data={initiativeBody}
         current={currentClick}
         headDatas1={initiativeHeader}
+        className="font-normal"
       />
       <OKRTable
         headDatas={initiativeHeader}
@@ -48,6 +49,7 @@ export const WorkMain = () => {
         setCurrent={setCurrentClick}
         onCreate={setCreateTitle}
         onClick={setVisible}
+        className="font-normal"
       />
       <p>
         - 하나의 Initiative는 Key Result 및 프로젝트에 관계 설정
