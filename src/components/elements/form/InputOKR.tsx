@@ -70,6 +70,7 @@ export const InputOKR = ({
     <section
       className={classNames(
         "fixed top-0 right-0 bg-white z-[15] px-10 shadow-lg xl:w-1/2 w-full h-full trasition-all duration-[500ms] ",
+        className,
         { "translate-x-0": visible, " translate-x-[100%]": !visible }
       )}
     >
@@ -95,7 +96,11 @@ export const InputOKR = ({
         />
       </div>
       {Object.keys(headDatas).map((key, index) => {
-        if (headDatas[key] !== title) {
+        if (
+          headDatas[key] === "KeyResult(기대 결과)" ||
+          headDatas[key] === "Object(목표)" ||
+          headDatas[key] === "InputInitiative(업무)"
+        ) {
           headDatas[key] = headDatas[key].split("(")[0];
         }
         return (

@@ -16,7 +16,7 @@ export const Main = ({ title }: MainProps) => {
     object: "Object(목표)",
     chapter: "Chapter",
     group: "Group",
-    achievement: "달성률",
+    achievement: "달성률(%)",
   };
   const keyResultHeader = {
     year: "년도",
@@ -25,7 +25,7 @@ export const Main = ({ title }: MainProps) => {
     keyresult: "KeyResult(기대 결과)",
     chapter: "Chapter",
     group: "Group",
-    achievement: "달성률",
+    achievement: "달성률(%)",
   };
   const initiativeHeader = {
     year: "년도",
@@ -36,7 +36,7 @@ export const Main = ({ title }: MainProps) => {
     chapter: "Chapter",
     group: "Group",
     name: "담당자",
-    achievement: "달성률",
+    achievement: "달성률(%)",
   };
   const chapterBodyDatas = [
     {
@@ -111,7 +111,6 @@ export const Main = ({ title }: MainProps) => {
         headDatas2={keyResultHeader}
         headDatas3={objectHeader}
       />
-
       <OKRTable
         title="Object(목표)"
         sorted={title}
