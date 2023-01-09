@@ -102,6 +102,7 @@ export const OKRTable = ({
           <li className="p-3 flex text-sm items-center">
             <Search
               className={classNames({ hidden: title !== "Object(목표)" })}
+              sorted={sorted}
             />
             <button
               className="z-10 outline-none text-white px-3 py-[2px] bg-zinc-700 hover:bg-gray-500 tracking-tight rounded-lg"
