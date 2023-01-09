@@ -11,11 +11,9 @@ body,
   accent-color: #e24755;
 }
 body {
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: "lavarwave", sans-serif;
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "lavarwave", sans-serif;
 }
 #table::-webkit-scrollbar {
   width: 10px;

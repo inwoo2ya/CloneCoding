@@ -29,7 +29,7 @@ export const WorkMain = () => {
 
   return (
     <main className="py-[100px] ">
-      <h1 className="text-4xl pb-5 border-b-[1px]">업무 관리</h1>
+      <h1 className="text-4xl pb-5">업무 관리</h1>
       <InputOKR
         sorted="Group"
         title="Initiative(업무)"

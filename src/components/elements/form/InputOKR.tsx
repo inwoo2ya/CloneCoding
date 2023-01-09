@@ -29,6 +29,7 @@ export const InputOKR = ({
 }: InputOKRprops) => {
   const [headDatas, setHeadDatas] = useState(headDatas1);
   const [prevTitle, setprevTitle] = useState<string>(title);
+  const [currentSorted, setCurrentSorted] = useState(sorted);
   const [input, setinput] = useState<string>("");
   const [currentData, setCurrentData] = useState<{
     [key: string]: string | number;
@@ -45,6 +46,7 @@ export const InputOKR = ({
   });
   const titleKey = title.toLowerCase().split("(")[0];
   useEffect(() => {
+    //클릭한 타이틀(object,keyresult,initiative)
     if (title === "Object(목표)") {
       setHeadDatas(headDatas3);
     } else if (title === "KeyResult(기대 결과)") {
@@ -53,19 +55,30 @@ export const InputOKR = ({
       setHeadDatas(headDatas1);
     }
   }, [title]);
+
   useEffect(() => {
+    //클릭한 인덱스
+    console.log(current);
     if (current !== undefined) {
       setCurrentData(data[current]);
+      setCurrent(undefined);
     }
-  }, [current]);
-
+  }, [data]);
+  useEffect(() => {
+    //Chapter인지 그룹인지
+    console.log(sorted);
+    if (sorted !== currentSorted) {
+      setCurrentSorted(sorted);
+      setVisible(false);
+    }
+  }, [sorted]);
   const inputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCurrentData({ ...currentData, [name]: value });
     console.log(value);
     //OKR 저장 함수 작성
   };
-  console.log(currentData);
+
   return (
     <section
       className={classNames(
@@ -96,26 +109,17 @@ export const InputOKR = ({
         />
       </div>
       {Object.keys(headDatas).map((key, index) => {
-        if (
-          headDatas[key] === "KeyResult(기대 결과)" ||
-          headDatas[key] === "Object(목표)" ||
-          headDatas[key] === "InputInitiative(업무)"
-        ) {
-          headDatas[key] = headDatas[key].split("(")[0];
-        }
         return (
           <div
             key={index}
             className={classNames("flex my-2", {
               hidden:
-                (sorted.toLowerCase() === "chapter" &&
-                  (headDatas[key] === "Group" ||
-                    headDatas[key] === "담당자")) ||
-                headDatas[key] === title,
+                sorted.toLowerCase() === "chapter" &&
+                (headDatas[key] === "Group" || headDatas[key] === "담당자"),
             })}
           >
             <div className="cursor-pointer items-center rounded-md xl:w-[160px] py-1 pl-2 text-[#37352fa6] hover:bg-gray-200">
-              {headDatas[key]}
+              {headDatas[key].split("(")[0]}
             </div>
 
             <input
