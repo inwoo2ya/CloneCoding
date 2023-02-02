@@ -1,0 +1,21 @@
+version: 3
+projects:
+- dir: terragrunts/[project1]/
+  workflow: terragrunt
+- dir: terragrunts/[project2]/
+  workflow: terragrunt
+
+workflows:
+  terragrunt:
+    plan:
+      steps:
+      - env:
+          name: TERRAGRUNT_TFPATH
+          command: 'echo "terraform v1.3.7"'
+      - run: terragrunt plan -no-color -out $PLANFILE
+    apply:
+      steps:
+      - env:
+          name: TERRAGRUNT_TFPATH
+          command: 'echo "terraform v1.3.7"'
+      - run: terragrunt apply -no-color $PLANFILE
