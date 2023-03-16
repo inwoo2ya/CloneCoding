@@ -1,5 +1,5 @@
 ## 사용 기술
-- React, tailwindcss, javascript, classnames, css, docker 등
+- React, tailwindcss, typescript, classnames, css, docker 등
 
 
 
